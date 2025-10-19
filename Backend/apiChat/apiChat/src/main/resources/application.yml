@@ -1,0 +1,17 @@
+server:
+  port: 9000
+
+jwt:
+  secret_key: kWhh2e2eKQhuIEyrzNYLYPIVJnSYI3INZyCqmUJA21VMvXbOHSgl1tCmEKvYVHmykYOz9rB5F0Lx4u4dmyn7skuNtyGPnTKPgL5vsmGym4MgnfV7KbUmB45w7hf21Q7PgZgMKV5rTYrHOPnrSChMsRBLcibWzaWdB8O1sfdAT7DAOctkXiS0QqjEmpKlknKIYqKScBF79lIB4urqSbXTkHmnGP9TQeN3dYnsWE4cfqB0bW3RoRYgdmCPn48DPZEy
+  expiration_time: 86400000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Chat_Db
+    username: postgres
+    password: samy
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
