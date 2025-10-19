@@ -1,0 +1,15 @@
+package dz.chat.apiChat.services.interfaces;
+
+import dz.chat.apiChat.dto.PageResponse;
+import dz.chat.apiChat.entity.Users;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
+public interface UsersService {
+    PageResponse<Users> findAllUsers(Pageable pageable);
+    Users addUsers(Users users);
+    Users getUsers(Long id);
+    Users updateUsers(Long id,Users users);
+    String deleteUsers(Long id);
+    PageResponse<Users> searchUsers(String nom,Pageable pageable);
+}

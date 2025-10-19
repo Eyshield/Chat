@@ -21,8 +21,10 @@ public class AuthentificationService {
     public AuthResponse signUp(Users request){
         Users user= new Users();
         user.setNom(request.getNom());
+        user.setPrenom(request.getPrenom());
         user.setEmail(request.getEmail());
         user.setRole(request.getRole());
+        user.setImageUrl(request.getImageUrl());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         String token= jwtService.generateToken(user);
         usersRepo.save(user);

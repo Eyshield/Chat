@@ -17,4 +17,10 @@ public class Messages {
     private Long id;
     private String message;
     private Date dateStamp;
+    @ManyToOne
+    @JoinColumn(name = "sender_id")
+    private Users sender ;
+    @ManyToOne
+    @JoinColumn(name = "receiver_id")
+    private Users receiver;
 }

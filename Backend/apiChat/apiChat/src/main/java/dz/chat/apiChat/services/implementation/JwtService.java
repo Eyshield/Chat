@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-@AllArgsConstructor
 public class JwtService {
     @Value("${jwt.secret_key}")
     private String secretKey;
@@ -34,7 +33,11 @@ public class JwtService {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(getSigninKey()).build().parseClaimsJws(token).getBody();
+        return Jwts.parser()
+                .setSigningKey(getSigninKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload();
     }
 
 

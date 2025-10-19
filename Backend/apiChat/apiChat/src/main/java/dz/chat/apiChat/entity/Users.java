@@ -42,10 +42,13 @@ public class Users implements UserDetails {
     )
     private Collection<Users> users= new ArrayList<>();
 
-@ManyToMany(mappedBy = "abonnement")
+@ManyToMany(mappedBy = "users")
 private Collection<Users> followers= new ArrayList<>();
 
-
+@OneToMany(mappedBy = "sender")
+private Collection<Messages>messagesSent= new ArrayList<>();
+@OneToMany(mappedBy = "receiver")
+private  Collection<Messages>messagesReceived= new ArrayList<>();
 
 
     @Override

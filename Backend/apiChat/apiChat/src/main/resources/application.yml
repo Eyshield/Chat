@@ -10,6 +10,10 @@ spring:
     url: jdbc:postgresql://localhost:5432/Chat_Db
     username: postgres
     password: samy
+  web:
+    resources:
+      static-locations: file:uploads/
+
 
   jpa:
     hibernate:
