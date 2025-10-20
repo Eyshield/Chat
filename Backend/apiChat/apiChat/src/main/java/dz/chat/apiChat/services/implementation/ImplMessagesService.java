@@ -15,7 +15,7 @@ public class ImplMessagesService implements MessagesService {
     private MessageRepo messageRepo;
     @Override
     public PageResponse<Messages> findAllMessages(Pageable pageable) {
-        Page<Messages>messages= messageRepo.getAllMessages(pageable);
+        Page<Messages>messages= messageRepo.findAll(pageable);
         PageResponse<Messages>response= new PageResponse<>(
                 messages.getContent(),
                 messages.getNumber(),
@@ -55,7 +55,7 @@ public class ImplMessagesService implements MessagesService {
     }
     @Override
     public PageResponse<Messages> searchMessages(String messages, Pageable pageable) {
-        Page<Messages>message= messageRepo.findByMessageIgnoreContainingCase(messages,pageable);
+        Page<Messages>message= messageRepo.findByMessageContainingIgnoreCase(messages,pageable);
         PageResponse<Messages>response= new PageResponse<>(
                 message.getContent(),
                 message.getNumber(),

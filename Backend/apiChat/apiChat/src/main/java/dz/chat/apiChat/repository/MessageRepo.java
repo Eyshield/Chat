@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MessageRepo extends JpaRepository<Messages,Long> {
-    Page<Messages> findByMessageIgnoreContainingCase(String message, Pageable pageable);
-    Page<Messages>getAllMessages(Pageable pageable);
+    Page<Messages> findByMessageContainingIgnoreCase(String message, Pageable pageable);
+    Page<Messages>findAll(Pageable pageable);
 }

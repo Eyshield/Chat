@@ -10,6 +10,6 @@ import java.util.Optional;
 @Repository
 public interface UsersRepo extends JpaRepository<Users,Long> {
     Optional<Users>findByEmail(String email);
-    Page<Users>findByNomIgnoreContainingCase(String nom, Pageable pageable);
-    Page<Users>getAllUsers(Pageable pageable);
+    Page<Users>findByNomContainingIgnoreCase(String nom, Pageable pageable);
+    Page<Users>findAll(Pageable pageable);
 }

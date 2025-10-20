@@ -19,11 +19,12 @@ public class AuthentificationService {
     private final JwtService jwtService;
 
     public AuthResponse signUp(Users request){
+
         Users user= new Users();
         user.setNom(request.getNom());
         user.setPrenom(request.getPrenom());
         user.setEmail(request.getEmail());
-        user.setRole(request.getRole());
+        user.setRole(Role.User);
         user.setImageUrl(request.getImageUrl());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         String token= jwtService.generateToken(user);

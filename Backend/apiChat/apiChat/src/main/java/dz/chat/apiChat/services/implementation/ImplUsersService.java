@@ -18,7 +18,7 @@ public class ImplUsersService implements UsersService {
     private PasswordEncoder passwordEncoder;
     @Override
     public PageResponse<Users> findAllUsers(Pageable pageable) {
-        Page<Users>users = usersRepo.getAllUsers(pageable);
+        Page<Users>users = usersRepo.findAll(pageable);
         PageResponse<Users> response= new PageResponse<>(
                 users.getContent(),
                 users.getNumber(),
@@ -61,7 +61,7 @@ public class ImplUsersService implements UsersService {
     }
     @Override
     public PageResponse<Users> searchUsers(String nom, Pageable pageable) {
-        Page<Users> users= usersRepo.findByNomIgnoreContainingCase(nom,pageable);
+        Page<Users> users= usersRepo.findByNomContainingIgnoreCase(nom,pageable);
         PageResponse<Users> response= new PageResponse<>(
                 users.getContent(),
                 users.getNumber(),
