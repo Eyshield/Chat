@@ -1,0 +1,170 @@
+<div
+  class="min-h-screen flex flex-col bg-linear-to-b from-purple-500 to-purple-700 text-white"
+>
+  <nav class="flex items-center justify-between px-8 py-6">
+    <div class="flex items-center space-x-3">
+      <fa-icon class="text-4xl text-white" [icon]="faTelegram"></fa-icon>
+      <span class="text-2xl font-bold">Chat</span>
+    </div>
+
+    <ul class="hidden md:flex space-x-8 items-center">
+      <li class="text-lg font-semibold hover:text-purple-200 transition">
+        <a href="#home">Home</a>
+      </li>
+      <li class="text-lg font-semibold hover:text-purple-200 transition">
+        <a href="#about">About us</a>
+      </li>
+      <li class="text-lg font-semibold hover:text-purple-200 transition">
+        <a href="#whatwedo">What we do</a>
+      </li>
+      <li>
+        <button
+          class="bg-white text-purple-600 font-semibold px-4 py-2 rounded-full hover:bg-purple-100 transition"
+        >
+          Get Started
+        </button>
+      </li>
+    </ul>
+
+    <div (click)="menuDrop = !menuDrop" class="md:hidden relative">
+      <button class="text-white text-3xl">&#9776;</button>
+      @if (menuDrop) {
+      <ul
+        class="absolute top-12 right-0 bg-purple-600 bg-opacity-90 w-48 p-4 rounded-xl flex flex-col space-y-4 shadow-lg z-50"
+      >
+        <li class="text-lg font-semibold hover:text-purple-200 transition">
+          <a href="#home" (click)="menuDrop = false">Home</a>
+        </li>
+        <li class="text-lg font-semibold hover:text-purple-200 transition">
+          <a href="#about" (click)="menuDrop = false">About us</a>
+        </li>
+        <li class="text-lg font-semibold hover:text-purple-200 transition">
+          <a href="#whatwedo" (click)="menuDrop = false">What we do</a>
+        </li>
+        <li>
+          <button
+            class="bg-white text-purple-600 font-semibold px-4 py-2 rounded-full hover:bg-purple-100 transition w-full"
+            (click)="menuDrop = false"
+          >
+            Get Started
+          </button>
+        </li>
+      </ul>
+      }
+    </div>
+  </nav>
+
+  <section
+    id="home"
+    class="flex flex-col md:flex-row items-center justify-between px-10 md:px-20 grow"
+  >
+    <div class="max-w-lg mt-10 md:mt-0">
+      <h1 class="text-5xl font-extrabold leading-tight">
+        Express yourself freely
+      </h1>
+      <p class="mt-6 text-lg text-purple-100">
+        This is where a truly different messaging experience begins.<br />
+        Enter a world where confidentiality and privacy are top priorities.<br />
+        Find all the features you've come to expect, and discover the ones<br />
+        you'll soon want to live without.
+      </p>
+      <div class="mt-8 flex space-x-4">
+        <button
+          class="bg-white text-purple-600 font-semibold px-6 py-3 rounded-full hover:bg-purple-100 transition"
+        >
+          Try it now
+        </button>
+        <button
+          class="border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-purple-600 transition"
+        >
+          Learn more
+        </button>
+      </div>
+    </div>
+
+    <div class="mt-10 md:mt-0">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
+        alt="Chat illustration"
+        class="w-80 md:w-[450px] drop-shadow-lg"
+      />
+    </div>
+  </section>
+
+  <section id="about" class="py-20 px-10 md:px-20 bg-purple-600 bg-opacity-30">
+    <div class="max-w-5xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">About Us</h2>
+      <p class="text-lg text-purple-100 leading-relaxed">
+        Chat was founded with one goal — to make communication safer, faster,
+        and truly private. We believe that everyone deserves a messaging
+        experience built on trust, transparency, and strong encryption. Our
+        mission is to empower individuals and communities to express themselves
+        freely, without fear of surveillance or data exploitation.
+      </p>
+      <div class="mt-10 flex flex-wrap justify-center gap-8">
+        <div class="bg-white/10 p-6 rounded-xl max-w-xs">
+          <h3 class="text-2xl font-semibold mb-2">Privacy First</h3>
+          <p class="text-purple-100 text-sm">
+            We never store your data. Every message is encrypted end-to-end.
+          </p>
+        </div>
+        <div class="bg-white/10 p-6 rounded-xl max-w-xs">
+          <h3 class="text-2xl font-semibold mb-2">Lightning Fast</h3>
+          <p class="text-purple-100 text-sm">
+            Experience real-time messaging optimized for speed and reliability.
+          </p>
+        </div>
+        <div class="bg-white/10 p-6 rounded-xl max-w-xs">
+          <h3 class="text-2xl font-semibold mb-2">Global Reach</h3>
+          <p class="text-purple-100 text-sm">
+            Connect with friends anywhere in the world, instantly and securely.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    id="whatwedo"
+    class="py-20 px-10 md:px-20 bg-purple-700 bg-opacity-30"
+  >
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-6">What We Do</h2>
+      <p class="text-lg text-purple-100 mb-10">
+        Chat combines technology, security, and user-centric design to redefine
+        how people communicate online.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition">
+          <h3 class="text-2xl font-semibold mb-3">Secure Messaging</h3>
+          <p class="text-purple-100 text-sm">
+            Your messages, and media are encrypted end-to-end — nobody can read
+            or listen except you and your contacts.
+          </p>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition">
+          <h3 class="text-2xl font-semibold mb-3">Smart Features</h3>
+          <p class="text-purple-100 text-sm">
+            Enjoy a powerfull search engine to find your friends.
+          </p>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-6 hover:bg-white/20 transition">
+          <h3 class="text-2xl font-semibold mb-3">Real-time Notifications</h3>
+          <p class="text-purple-100 text-sm">
+            Stay instantly connected and informed with cross-platform push
+            notifications.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer
+    class="text-center py-6 text-purple-200 text-sm bg-purple-800 bg-opacity-30"
+  >
+    © 2025 Chat — All rights reserved.
+  </footer>
+</div>
