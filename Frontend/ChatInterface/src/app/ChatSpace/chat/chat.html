@@ -1,0 +1,56 @@
+<div class="flex h-screen w-full bg-gray-100">
+  <div class="h-full w-fit bg-white shadow-lg">
+    <app-chat-bar (userSelected)="onUserSelected($event)"></app-chat-bar>
+  </div>
+
+  <div class="flex flex-1 justify-center items-center relative bg-gray-50">
+    @if (!selectedUser) {
+    <ng-container>
+      <div class="flex flex-col justify-center items-center">
+        <img src="chat.jpg" alt="Chat" class="w-96 h-96 object-contain" />
+        <p class="text-gray-500 text-lg mt-4">
+          Sélectionne un utilisateur pour commencer la discussion 💬
+        </p>
+      </div>
+    </ng-container>
+    }@else {
+    <ng-template>
+      <div class="flex flex-col h-full w-full p-6">
+        <div
+          class="flex items-center space-x-4 border-b pb-4 mb-4 bg-white shadow-sm rounded-xl p-4"
+        >
+          <img
+            [src]="selectedUser.image"
+            alt="Photo de {{ selectedUser.name }}"
+            class="w-12 h-12 rounded-full object-cover"
+          />
+          <h2 class="text-xl font-bold text-gray-800">
+            Discussion avec {{ selectedUser.name }}
+          </h2>
+        </div>
+
+        <div
+          class="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-100 rounded-xl"
+        >
+          <div class="text-gray-600 text-center italic">
+            (Historique du chat à venir...)
+          </div>
+        </div>
+
+        <div class="mt-4 flex items-center space-x-3">
+          <input
+            type="text"
+            placeholder="Écris ton message..."
+            class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+          <button
+            class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition"
+          >
+            Envoyer
+          </button>
+        </div>
+      </div>
+    </ng-template>
+    }
+  </div>
+</div>

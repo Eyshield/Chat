@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/landing-page/landing-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/landing-page/landing-page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/landing-page/landing-page.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/landing-page/landing-page.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/app.routes.ts" afterDir="false" />
-    </list>
+    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,7 +35,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sany/Downloads/Chat/Backend",
+    "last_opened_file_path": "C:/Users/sany/Downloads/api.OnAirApp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
