@@ -1,0 +1,25 @@
+<div class="h-fit w-fit">
+  <div class="relative rounded-full bg-white">
+    <img
+      src="profil.png"
+      alt="image de profil"
+      class="w-15 h-15 rounded-full cursor-pointer object-contain"
+      (click)="dropdown()"
+    />
+    @if (dropDownMenu) {
+    <div
+      class="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10"
+    >
+      <a
+        [routerLink]="['/ProfilSettings']"
+        class="block px-4 py-2 hover:bg-purple-500 hover:text-white"
+      >
+        Profil settings
+      </a>
+      <button class="hover:bg-purple-500 hover:text-white w-full text-center">
+        logout
+      </button>
+    </div>
+    }
+  </div>
+</div>

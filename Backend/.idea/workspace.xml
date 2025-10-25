@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="" />
+    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,7 +38,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sany/Downloads/api.OnAirApp",
+    "last_opened_file_path": "C:/Users/sany/Downloads/Chat/Backend",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
