@@ -5,6 +5,7 @@ import dz.chat.apiChat.entity.Messages;
 import dz.chat.apiChat.entity.Users;
 import dz.chat.apiChat.services.interfaces.UsersService;
 import lombok.AllArgsConstructor;
+import org.apache.coyote.Response;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
@@ -56,11 +57,70 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
-
     @GetMapping
+    public ResponseEntity<PageResponse<Users>> getAllUsers(Pageable pageable){
+        try {
+            PageResponse<Users> response= usersService.findAllUsers(pageable);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+        }
+    }
+
+
+
+    @GetMapping("/followers/{userId}")
+    public ResponseEntity<PageResponse<Users>> getFollowers(@PathVariable Long userId,Pageable pageable){
+     try {
+         PageResponse<Users>response=usersService.findFollowersByUserId(userId,pageable);
+         return ResponseEntity.status(HttpStatus.OK).body(response);
+
+     }catch (Exception e){
+         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+     }
+    }
+
+
+    @GetMapping("/followed/{userId}")
+    public ResponseEntity<PageResponse<Users>> getFollowed(@PathVariable Long userId,Pageable pageable){
+        try {
+            PageResponse<Users>response=usersService.findFollowedByUserId(userId,pageable);
+            return ResponseEntity.status(HttpStatus.OK).body(response);
+
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+
+        }
+    }
+    @PostMapping("/follow/{userId}/{targetId}")
+    public ResponseEntity<Void> followUser(@PathVariable Long userId, @PathVariable Long targetId) {
+     try {
+         usersService.followUser(userId,targetId);
+         return ResponseEntity.status(HttpStatus.OK).build();
+
+     }catch (Exception e){
+         return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+     }
+    }
+
+    @DeleteMapping("/unfollow/{userId}/{targetId}")
+    public ResponseEntity<Void> unfollowUser(@PathVariable Long userId, @PathVariable Long targetId) {
+        try {
+            usersService.unFollowUser(userId,targetId);
+            return ResponseEntity.status(HttpStatus.OK).build();
+
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
+
+    }
+
+    @GetMapping("/search")
     public ResponseEntity<PageResponse<Users>> searchUsers(
             @RequestParam(required = false, defaultValue = "") String nom,
-            @PageableDefault(size = 5) Pageable pageable) {
+            @PageableDefault(size = 5,page = 0) Pageable pageable) {
         try {
             PageResponse<Users>response=usersService.searchUsers(nom, pageable);
             return ResponseEntity.ok(response);
@@ -68,4 +128,7 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
+
 }

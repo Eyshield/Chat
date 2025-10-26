@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

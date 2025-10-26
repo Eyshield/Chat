@@ -5,6 +5,7 @@ import dz.chat.apiChat.entity.Users;
 import dz.chat.apiChat.repository.UsersRepo;
 import dz.chat.apiChat.services.interfaces.UsersService;
 import lombok.AllArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.parameters.P;
@@ -59,6 +60,60 @@ public class ImplUsersService implements UsersService {
             return e.getMessage();
         }
     }
+    @Override
+    public  PageResponse<Users> findFollowersByUserId(Long userId,Pageable pageable){
+        Page<Users> users= usersRepo.findFollowersByUserId(userId,pageable);
+        PageResponse<Users>response=new PageResponse<>(
+                users.getContent(),
+                users.getNumber(),
+                users.getSize(),
+                users.getTotalElements(),
+                users.getTotalPages(),
+                users.isFirst(),
+                users.isLast()
+        );
+     return response;
+    }
+
+   @Override
+    public PageResponse<Users> findFollowedByUserId( Long userId,Pageable pageable){
+        Page<Users>users= usersRepo.findFollowedByUserId(userId,pageable);
+       PageResponse<Users>response=new PageResponse<>(
+               users.getContent(),
+               users.getNumber(),
+               users.getSize(),
+               users.getTotalElements(),
+               users.getTotalPages(),
+               users.isFirst(),
+               users.isLast()
+       );
+       return response;
+
+   }
+
+    @Override
+    public String followUser(Long userId, Long targetId) {
+        Users user = usersRepo.findById(userId).orElseThrow();
+        Users target = usersRepo.findById(targetId).orElseThrow();
+
+        user.getUsers().add(target);
+        usersRepo.save(user);
+
+        return user.getUsername() + " suit maintenant " + target.getUsername();
+    }
+
+    @Override
+    public String unFollowUser(Long userId, Long targetId) {
+        Users user = usersRepo.findById(userId).orElseThrow();
+        Users target = usersRepo.findById(targetId).orElseThrow();
+
+        user.getUsers().remove(target);
+        usersRepo.save(user);
+
+        return user.getUsername() + " ne suit plus " + target.getUsername();
+
+    }
+
     @Override
     public PageResponse<Users> searchUsers(String nom, Pageable pageable) {
         Page<Users> users= usersRepo.findByNomContainingIgnoreCase(nom,pageable);
