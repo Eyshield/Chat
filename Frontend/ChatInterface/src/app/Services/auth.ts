@@ -23,11 +23,8 @@ export class Auth {
     );
   }
 
-  public Login(fromData: any): Observable<any> {
-    return this.Http.post<any>(
-      environment.apiUrl + '/auth/login',
-      fromData
-    ).pipe(
+  public Login(user: any): Observable<any> {
+    return this.Http.post<any>(environment.apiUrl + '/auth/login', user).pipe(
       tap((response) => {
         this.cookie.set('token', response.token),
           this.cookie.set('user_Id', response.id),

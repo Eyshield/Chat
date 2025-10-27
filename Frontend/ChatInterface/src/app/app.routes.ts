@@ -8,6 +8,7 @@ import { ProfileSettings } from './ChatSpace/profile-settings/profile-settings';
 
 export const routes: Routes = [
   { path: '', component: LandingPage },
+  { path: 'landingPage', component: LandingPage },
   { path: 'LogIn', component: LogIn },
   { path: 'SignUp', component: SignUp },
   { path: 'ChatBar', component: ChatBar },

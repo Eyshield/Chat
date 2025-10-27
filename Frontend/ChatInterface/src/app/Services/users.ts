@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { environment } from '../../environnement/environnement';
 import { Observable } from 'rxjs';
-import { users } from '../Models/Users.models';
+import { User } from '../Models/Users.models';
 import { Page } from '../Models/Page.models';
 
 @Injectable({
@@ -12,18 +12,18 @@ import { Page } from '../Models/Page.models';
 export class Users {
   constructor(private Http: HttpClient, private cookie: CookieService) {}
 
-  public addUser(user: users): Observable<users> {
+  public addUser(user: User): Observable<User> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.post<users>(environment.apiUrl + '/user', user, {
+    return this.Http.post<User>(environment.apiUrl + '/user', user, {
       headers,
     });
   }
 
-  public updateUser(id: number, user: users): Observable<users> {
+  public updateUser(id: number, user: User): Observable<User> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.put<users>(environment.apiUrl + `/user/${id}`, user, {
+    return this.Http.put<User>(environment.apiUrl + `/user/${id}`, user, {
       headers,
     });
   }
@@ -36,26 +36,26 @@ export class Users {
     });
   }
 
-  public getUserById(id: number): Observable<users> {
+  public getUserById(id: number): Observable<User> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<users>(environment.apiUrl + `/user/${id}`, {
+    return this.Http.get<User>(environment.apiUrl + `/user/${id}`, {
       headers,
     });
   }
 
-  public getAllUsers(number: number, size: number): Observable<Page<users>> {
+  public getAllUsers(number: number, size: number): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<Page<users>>(
+    return this.Http.get<Page<User>>(
       environment.apiUrl + `/user?page=${number}&size=${size}`,
       { headers }
     );
   }
-  public searchUsers(nom: String): Observable<Page<Users>> {
+  public searchUsers(nom: String): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<Page<Users>>(
+    return this.Http.get<Page<User>>(
       environment.apiUrl + `/user/search?nom=${nom}`,
       { headers }
     );
@@ -64,10 +64,10 @@ export class Users {
     size: number,
     number: number,
     userId: number
-  ): Observable<Page<Users>> {
+  ): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<Page<Users>>(
+    return this.Http.get<Page<User>>(
       environment.apiUrl +
         `/user/followers/${userId}?page=${number}&size=${size}`,
       {
@@ -79,10 +79,10 @@ export class Users {
     size: number,
     number: number,
     userId: number
-  ): Observable<Page<Users>> {
+  ): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<Page<Users>>(
+    return this.Http.get<Page<User>>(
       environment.apiUrl +
         `/user/followed/${userId}?page=${number}&size=${size}`,
       {

@@ -11,6 +11,7 @@
         <label id="Nom" for="Nom" class="text-white font-medium">Nom</label>
         <input
           id="Nom"
+          formControlName="nom"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
         />
@@ -19,6 +20,7 @@
         >
         <input
           id="Prenom"
+          formControlName="prenom"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
         />
@@ -26,6 +28,7 @@
           >Username</label
         >
         <input
+          formControlName="username"
           id="Username"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
@@ -36,6 +39,7 @@
           >Email</label
         >
         <input
+          formControlName="email"
           id="Email"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
@@ -45,6 +49,7 @@
         >
         <input
           id="Password"
+          formControlName="password"
           type="password"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
         />
@@ -55,11 +60,32 @@
           >Confirm Password</label
         >
         <input
+          formControlName="confirmPassword"
           id="ConfirmPassword"
           type="password"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
         />
-        }
+        } @if (i==3) {
+        <label id="image" for="image" class="text-white font-medium"
+          >image</label
+        >
+        <input
+          id="image"
+          formControlName="image"
+          (onChange)="onFileChange($event, 'image')"
+          type="file"
+          class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+        />
+        @if (previewImage) {
+        <div class="mt-2">
+          <img
+            [src]="previewImage || ''"
+            alt="Preview"
+            class="w-32 h-32 object-cover rounded-lg"
+          />
+        </div>
+        } }
+
         <div class="flex justify-between w-full">
           <div>
             @if (i > 1) {
