@@ -35,7 +35,7 @@ export class LogIn {
       };
       this.auth.Login(user).subscribe({
         next: (response) => {
-          this.router.navigate(['/ChatSpace']);
+          this.router.navigate(['/Chat']);
         },
         error: (err) => {
           console.error('Erreur de connexion', err);

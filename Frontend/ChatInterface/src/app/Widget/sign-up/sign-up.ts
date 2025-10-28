@@ -15,6 +15,7 @@ import {
   styleUrl: './sign-up.css',
 })
 export class SignUp {
+  selectedFile: File | null = null;
   constructor(private router: Router, private auth: Auth) {}
   signUpForm = new FormGroup({
     nom: new FormControl('', [Validators.required]),
@@ -33,20 +34,14 @@ export class SignUp {
   });
   previewImage: string | ArrayBuffer | null = null;
   i: number = 1;
-  onFileChange(event: any, field: 'image') {
+  onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
-      const preview = URL.createObjectURL(file);
-      if (field === 'image') {
-        this.previewImage = preview;
-      }
-
-      this.signUpForm.patchValue({ [field]: file });
+      this.selectedFile = file;
+      this.previewImage = URL.createObjectURL(file);
     } else {
-      if (field === 'image') {
-        this.previewImage = null;
-        this.signUpForm.patchValue({ image: null });
-      }
+      this.selectedFile = null;
+      this.previewImage = null;
     }
   }
   CounterI() {
@@ -58,12 +53,18 @@ export class SignUp {
   SignUp() {
     if (this.signUpForm.valid) {
       const formData = new FormData();
-      Object.entries(this.signUpForm.value).forEach(([Key, value]) =>
-        formData.append(Key, value as any)
-      );
+
+      for (const [key, value] of Object.entries(this.signUpForm.value)) {
+        if (!['image', 'confirmPassword'].includes(key)) {
+          formData.append(key, value as string);
+        }
+      }
+      if (this.selectedFile) {
+        formData.append('image', this.selectedFile);
+      }
       this.auth.register(formData).subscribe({
         next: (response) => {
-          this.router.navigate(['/chatspace']);
+          this.router.navigate(['/Chat']);
         },
         error: (err) => {
           console.error('Erreur de connexion', err);

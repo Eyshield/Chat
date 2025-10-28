@@ -1,7 +1,7 @@
 <div class="h-fit w-fit">
   <div class="relative rounded-full bg-white">
     <img
-      src="profil.png"
+      [src]="user().imageUrl"
       alt="image de profil"
       class="w-15 h-15 rounded-full cursor-pointer object-contain"
       (click)="dropdown()"
@@ -16,7 +16,10 @@
       >
         Profil settings
       </a>
-      <button class="hover:bg-purple-500 hover:text-white w-full text-center">
+      <button
+        (click)="logout()"
+        class="hover:bg-purple-500 hover:text-white w-full text-center"
+      >
         logout
       </button>
     </div>

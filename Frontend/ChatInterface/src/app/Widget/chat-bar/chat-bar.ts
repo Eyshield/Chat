@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, signal } from '@angular/core';
 import { Users } from '../../Services/users';
 import { User } from '../../Models/Users.models';
 import { Page } from '../../Models/Page.models';
@@ -14,11 +14,11 @@ export class ChatBar {
   @Output() userSelected = new EventEmitter<any>();
 
   constructor(private userService: Users, private cookie: CookieService) {}
-  users: User[] = [];
+  users = signal<User[]>([]);
   pageUsers: Page<User> = {
     content: [],
     number: 0,
-    size: 0,
+    size: 5,
     totalElements: 0,
     totalPages: 0,
     first: false,
@@ -30,8 +30,12 @@ export class ChatBar {
     this.userService
       .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
       .subscribe((data) => {
-        this.pageUsers = data;
-        this.users = data.content;
+        if (data && data.content) {
+          this.pageUsers = data;
+          this.users.set(data.content);
+        } else {
+          this.users.set([]);
+        }
       });
   }
 

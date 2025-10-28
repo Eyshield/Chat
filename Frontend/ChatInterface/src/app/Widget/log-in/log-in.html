@@ -8,7 +8,7 @@
       Welcome Back
     </h2>
 
-    <form class="flex flex-col space-y-5">
+    <form [formGroup]="loginForm" class="flex flex-col space-y-5">
       <div class="flex flex-col space-y-2">
         <label for="email" class="text-white font-medium">Email</label>
         <input
@@ -32,6 +32,7 @@
       </div>
 
       <button
+        (click)="Login()"
         type="submit"
         class="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-lg shadow-lg transition"
       >
