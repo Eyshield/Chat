@@ -7,4 +7,5 @@ export interface User {
   imageUrl: String;
   users: User;
   followers: User;
+  isFollowed?: boolean;
 }

@@ -11,7 +11,19 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrl: './chat-bar.css',
 })
 export class ChatBar {
+  toggleFollow(_t5: any) {
+    throw new Error('Method not implemented.');
+  }
   @Output() userSelected = new EventEmitter<any>();
+  filteredUsers = signal<Page<User>>({
+    content: [],
+    number: 0,
+    size: 5,
+    totalElements: 0,
+    totalPages: 0,
+    first: false,
+    last: false,
+  });
 
   constructor(private userService: Users, private cookie: CookieService) {}
   users = signal<User[]>([]);

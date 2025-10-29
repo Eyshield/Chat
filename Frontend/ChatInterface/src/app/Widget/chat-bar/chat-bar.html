@@ -1,11 +1,46 @@
 <div
-  class="h-full w-fit group bg-linear-to-t from-purple-500 to-purple-700 text-white p-4 transition-all duration-300 hover:w-48 overflow-hidden"
+  class="h-full w-fit group bg-linear-to-t from-purple-500 to-purple-700 text-white p-4 transition-all duration-300 hover:w-64 overflow-hidden"
 >
+  <div class="relative">
+    <input
+      type="text"
+      placeholder="Search users..."
+      class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 bg-transparent text-white placeholder-white/70 p-2 rounded-md w-full"
+    />
+    @if ((filteredUsers().content?.length ?? 0)>0) {
+    <ul
+      class="absolute bg-purple-600 mt-1 rounded-md shadow-lg z-10 w-full max-h-48 overflow-y-auto"
+    >
+      @for (user of filteredUsers()?.content; track $index) {
+      <li
+        class="flex items-center justify-between px-3 py-2 hover:bg-purple-700 cursor-pointer"
+      >
+        <div class="flex items-center space-x-2">
+          <img
+            [src]="user.imageUrl"
+            [alt]="user.nom"
+            class="rounded-full w-8 h-8 object-cover"
+          />
+          <span>{{ user.nom }}</span>
+        </div>
+
+        <button
+          (click)="toggleFollow(user)"
+          class="text-xs bg-white text-purple-700 px-2 py-1 rounded-md hover:bg-purple-200 transition"
+        >
+          {{ user.isFollowed ? "Unfollow" : "Follow" }}
+        </button>
+      </li>
+      }
+    </ul>
+    }
+  </div>
+
   <ul class="flex flex-col space-y-4 mt-6">
-    @if (users().length>0) { @for (user of users(); track $index) {
+    @if (users().length > 0) { @for (user of users(); track $index) {
     <li
       (click)="selectUser(user)"
-      class="flex items-center hover:bg-purple-600 rounded-xl cursor-pointer transition-colors duration-200"
+      class="flex items-center hover:bg-purple-600 rounded-xl cursor-pointer transition-colors duration-200 px-2 py-1"
     >
       <img
         [src]="user.imageUrl"
@@ -13,11 +48,11 @@
         class="rounded-full w-10 h-10 object-cover"
       />
       <span
-        class="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        class="ml-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
       >
         {{ user.nom }}
       </span>
     </li>
-    }}
+    } }
   </ul>
 </div>
