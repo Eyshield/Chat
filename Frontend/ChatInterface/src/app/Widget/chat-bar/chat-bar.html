@@ -7,11 +7,11 @@
       placeholder="Search users..."
       class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 bg-transparent text-white placeholder-white/70 p-2 rounded-md w-full"
     />
-    @if ((filteredUsers().content?.length ?? 0)>0) {
+    @if (filteredUsers().content.length >0) {
     <ul
       class="absolute bg-purple-600 mt-1 rounded-md shadow-lg z-10 w-full max-h-48 overflow-y-auto"
     >
-      @for (user of filteredUsers()?.content; track $index) {
+      @for (user of filteredUsers().content; track $index) {
       <li
         class="flex items-center justify-between px-3 py-2 hover:bg-purple-700 cursor-pointer"
       >

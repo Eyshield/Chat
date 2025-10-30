@@ -27,17 +27,38 @@
         </h2>
       </div>
 
-      <div class="flex-1 overflow-y-auto p-4 space-y-3 rounded-xl">
-        <div class="text-gray-600 text-center italic">(Charging ...)</div>
+      <div
+        class="flex-1 overflow-y-auto p-4 space-y-3 rounded-xl bg-white shadow-sm"
+      >
+        <div *ngFor="let msg of filteredMessages()">
+          <div
+            [ngClass]="{
+              'text-right': msg.self,
+              'text-left': !msg.self
+            }"
+          >
+            <div
+              [ngClass]="{
+                'bg-purple-600 text-white rounded-lg p-2 inline-block':
+                  msg.self,
+                'bg-gray-200 text-gray-800 rounded-lg p-2 inline-block':
+                  !msg.self
+              }"
+            >
+              {{ msg.message }}
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="mt-4 flex items-center space-x-3">
         <input
           type="text"
-          placeholder="write a  message..."
+          placeholder="write a message..."
           class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <button
+          (click)="sendMessage()"
           class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition"
         >
           Envoyer
