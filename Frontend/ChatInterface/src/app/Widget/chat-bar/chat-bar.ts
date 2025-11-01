@@ -3,17 +3,15 @@ import { Users } from '../../Services/users';
 import { User } from '../../Models/Users.models';
 import { Page } from '../../Models/Page.models';
 import { CookieService } from 'ngx-cookie-service';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chat-bar',
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './chat-bar.html',
   styleUrl: './chat-bar.css',
 })
 export class ChatBar {
-  toggleFollow(_t5: any) {
-    throw new Error('Method not implemented.');
-  }
   @Output() userSelected = new EventEmitter<any>();
   filteredUsers = signal<Page<User>>({
     content: [],
@@ -36,22 +34,39 @@ export class ChatBar {
     first: false,
     last: false,
   };
+  searchTerm = new FormControl('');
 
   ngOnInit() {
+    this.loadUsers();
+  }
+  loadUsers() {
     const id = Number(this.cookie.get('user_Id'));
-    this.userService
-      .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
-      .subscribe((data) => {
-        if (data && data.content) {
-          this.pageUsers = data;
-          this.users.set(data.content);
-        } else {
-          this.users.set([]);
-        }
+    if (this.searchTerm.value && this.searchTerm.value !== null) {
+      this.userService.searchUsers(this.searchTerm.value).subscribe((data) => {
+        this.filteredUsers.set(data);
       });
+    } else {
+      this.userService
+        .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
+        .subscribe((data) => {
+          if (data && data.content) {
+            this.pageUsers = data;
+            console.log(data);
+            this.users.set(data.content);
+          } else {
+            this.users.set([]);
+          }
+        });
+    }
   }
 
   selectUser(user: any) {
     this.userSelected.emit(user);
+  }
+  toggleFollow(target_Id: number) {
+    const user_Id = Number(this.cookie.get('user_Id'));
+    this.userService.follow(user_Id, target_Id).subscribe((data) => {
+      this.loadUsers();
+    });
   }
 }

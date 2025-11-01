@@ -95,6 +95,7 @@ export class Users {
     const headers = { Authorization: `Bearer ${token}` };
     return this.Http.post<void>(
       environment.apiUrl + `/user/follow/${userId}/${targetId}`,
+      {},
       { headers }
     );
   }

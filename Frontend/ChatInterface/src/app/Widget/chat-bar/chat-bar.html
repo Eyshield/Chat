@@ -4,6 +4,8 @@
   <div class="relative">
     <input
       type="text"
+      [formControl]="searchTerm"
+      (input)="loadUsers()"
       placeholder="Search users..."
       class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-white/40 bg-transparent text-white placeholder-white/70 p-2 rounded-md w-full"
     />
@@ -25,7 +27,7 @@
         </div>
 
         <button
-          (click)="toggleFollow(user)"
+          (click)="toggleFollow(user.id)"
           class="text-xs bg-white text-purple-700 px-2 py-1 rounded-md hover:bg-purple-200 transition"
         >
           {{ user.isFollowed ? "Unfollow" : "Follow" }}
