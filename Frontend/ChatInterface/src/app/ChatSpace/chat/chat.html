@@ -18,12 +18,12 @@
         class="flex items-center space-x-4 border-b pb-4 mb-4 bg-white shadow-sm rounded-xl p-4"
       >
         <img
-          [src]="selectedUser.image"
+          [src]="selectedUser.imageUrl"
           alt="Photo de {{ selectedUser.name }}"
           class="w-12 h-12 rounded-full object-cover"
         />
         <h2 class="text-xl font-bold text-gray-800">
-          {{ selectedUser.name }}
+          {{ selectedUser.nom }}
         </h2>
       </div>
 
@@ -53,11 +53,13 @@
 
       <div class="mt-4 flex items-center space-x-3">
         <input
+          [formControl]="newMessage"
           type="text"
           placeholder="write a message..."
           class="flex-1 border rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500"
         />
         <button
+          type="button"
           (click)="sendMessage()"
           class="bg-purple-600 text-white px-4 py-2 rounded-full hover:bg-purple-700 transition"
         >

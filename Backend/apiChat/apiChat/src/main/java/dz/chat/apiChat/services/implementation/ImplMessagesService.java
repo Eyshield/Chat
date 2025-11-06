@@ -1,18 +1,26 @@
 package dz.chat.apiChat.services.implementation;
 
+import dz.chat.apiChat.dto.MessageDto;
 import dz.chat.apiChat.dto.PageResponse;
 import dz.chat.apiChat.entity.Messages;
+import dz.chat.apiChat.entity.Users;
 import dz.chat.apiChat.repository.MessageRepo;
+import dz.chat.apiChat.repository.UsersRepo;
 import dz.chat.apiChat.services.interfaces.MessagesService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 @Service
 @AllArgsConstructor
 public class ImplMessagesService implements MessagesService {
     private MessageRepo messageRepo;
+    private final UsersRepo usersRepo;
+    private final SimpMessagingTemplate messagingTemplate;
     @Override
     public PageResponse<Messages> findAllMessages(Pageable pageable) {
         Page<Messages>messages= messageRepo.findAll(pageable);
@@ -29,9 +37,32 @@ public class ImplMessagesService implements MessagesService {
     }
 
     @Override
-    public Messages addMessages(Messages messages) {
-        return messageRepo.save(messages);
+    public MessageDto sendMessages(MessageDto messageDto) {
+        Users sender = usersRepo.findById(messageDto.getSenderId()).orElseThrow();
+        Users receiver = usersRepo.findById(messageDto.getReceiverId()).orElseThrow();
+
+        Messages message = new Messages();
+        message.setMessage(messageDto.getMessage());
+        message.setSender(sender);
+        message.setReceiver(receiver);
+        message.setDateStamp(new Date());
+        message.setRead(false);
+        message = messageRepo.save(message);
+
+        // Met à jour le DTO
+        messageDto.setId(message.getId());
+        messageDto.setDateStamp(message.getDateStamp());
+
+        // Envoi en temps réel au destinataire
+        messagingTemplate.convertAndSendToUser(
+                receiver.getId().toString(),
+                "/queue/messages",
+                messageDto
+        );
+
+        return messageDto;
     }
+
 
     @Override
     public Messages updateMessages(Long id, Messages messages) {

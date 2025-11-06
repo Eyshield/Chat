@@ -45,6 +45,11 @@ public class AuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authToken);
                 }
             }
+            String path = request.getRequestURI();
+            if (path.startsWith("/ws")) {
+                filterChain.doFilter(request, response);
+                return;
+            }
             filterChain.doFilter(request,response);
 
         }catch (Exception exception) {

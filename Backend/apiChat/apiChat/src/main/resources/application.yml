@@ -12,10 +12,12 @@ spring:
     password: samy
   web:
     resources:
-      static-locations: file:uploads/
+      static-locations: file:C:/Users/sany/Downloads/Chat/Backend/uploads/
+  mvc:
+    static-path-pattern: /uploads/**
 
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true

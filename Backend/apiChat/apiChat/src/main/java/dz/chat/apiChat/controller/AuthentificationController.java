@@ -26,27 +26,32 @@ public class AuthentificationController {
     public ResponseEntity<AuthResponse> signUp(
             @RequestParam("nom") String nom,
             @RequestParam("prenom") String prenom,
+            @RequestParam("username") String username,
             @RequestParam("email") String email,
             @RequestParam("password") String password,
-            @RequestParam("role") Role role,
             @RequestParam(value = "image", required = false) MultipartFile image) {
 
         Users user = new Users();
         user.setNom(nom);
         user.setPrenom(prenom);
         user.setEmail(email);
+        user.setUsername(username);
         user.setPassword(password);
-        user.setRole(role);
+        user.setRole(Role.User);
         if (image != null && !image.isEmpty()) {
             try {
-                String uploadDir = "uploads/";
+                String uploadDir = System.getProperty("user.dir") + "/uploads/";
+                Path uploadPath = Paths.get(uploadDir);
+                if (!Files.exists(uploadPath)) {
+                    Files.createDirectories(uploadPath);
+                }
                 String fileName = System.currentTimeMillis() + "_" + image.getOriginalFilename();
-                Path filePath = Paths.get(uploadDir + fileName);
+                Path filePath = uploadPath.resolve(fileName);
                 Files.copy(image.getInputStream(), filePath, StandardCopyOption.REPLACE_EXISTING);
                 String imageUrl = "http://localhost:9000/uploads/" + fileName;
                 user.setImageUrl(imageUrl);
-
             } catch (IOException e) {
+                e.printStackTrace();
                 throw new RuntimeException("Erreur lors de l'upload de l'image", e);
             }
         }

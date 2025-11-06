@@ -1,5 +1,6 @@
 package dz.chat.apiChat.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import dz.chat.apiChat.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,6 +35,7 @@ public class Users implements UserDetails {
     private String imageUrl;
 
     @ManyToMany
+    @JsonIgnoreProperties("followers")
     @JoinTable(
             name = "abonnement",
             joinColumns = @JoinColumn(name = "abonner_id"),
@@ -42,6 +44,7 @@ public class Users implements UserDetails {
     private Collection<Users> users= new ArrayList<>();
 
 @ManyToMany(mappedBy = "users")
+@JsonIgnoreProperties("users")
 private Collection<Users> followers= new ArrayList<>();
 
 @OneToMany(mappedBy = "sender")
@@ -49,7 +52,10 @@ private Collection<Messages>messagesSent= new ArrayList<>();
 @OneToMany(mappedBy = "receiver")
 private  Collection<Messages>messagesReceived= new ArrayList<>();
 
-
+    @Override
+    public String getUsername() {
+        return email;
+    }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role.name()));

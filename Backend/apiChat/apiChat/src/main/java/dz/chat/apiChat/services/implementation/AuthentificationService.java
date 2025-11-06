@@ -24,6 +24,7 @@ public class AuthentificationService {
         user.setNom(request.getNom());
         user.setPrenom(request.getPrenom());
         user.setEmail(request.getEmail());
+        user.setUsername(request.getUsername());
         user.setRole(Role.User);
         user.setImageUrl(request.getImageUrl());
         user.setPassword(passwordEncoder.encode(request.getPassword()));

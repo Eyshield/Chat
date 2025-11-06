@@ -1,6 +1,7 @@
 package dz.chat.apiChat.services.interfaces;
 
 import dz.chat.apiChat.dto.PageResponse;
+import dz.chat.apiChat.dto.UserDto;
 import dz.chat.apiChat.entity.Users;
 import lombok.extern.java.Log;
 import org.springframework.data.domain.Page;
@@ -13,8 +14,9 @@ public interface UsersService {
     Users updateUsers(Long id,Users users);
     String deleteUsers(Long id);
     PageResponse<Users> searchUsers(String nom,Pageable pageable);
+    PageResponse<UserDto> searchUsers(String nom, Long userId, Pageable pageable);
 
-    PageResponse<Users> findFollowersByUserId(Long userId,Pageable pageable);
+    PageResponse<UserDto> findFollowersByUserId(Long userId,Pageable pageable);
 
     PageResponse<Users> findFollowedByUserId( Long userId,Pageable pageable);
 

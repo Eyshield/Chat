@@ -19,4 +19,6 @@ public interface UsersRepo extends JpaRepository<Users,Long> {
 
     @Query("SELECT f FROM Users u JOIN u.users f WHERE u.id = :userId")
     Page<Users> findFollowedByUserId(@Param("userId") Long userId,Pageable pageable);
+
+
 }

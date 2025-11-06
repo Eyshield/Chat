@@ -1,6 +1,7 @@
 package dz.chat.apiChat.controller;
 
 import dz.chat.apiChat.dto.PageResponse;
+import dz.chat.apiChat.dto.UserDto;
 import dz.chat.apiChat.entity.Messages;
 import dz.chat.apiChat.entity.Users;
 import dz.chat.apiChat.services.interfaces.UsersService;
@@ -48,12 +49,18 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Users> getMessageById(@PathVariable Long id) {
+    public ResponseEntity<Users> getUserById(@PathVariable Long id) {
+
         try {
             Users response = usersService.getUsers(id);
-            if (response == null) return ResponseEntity.notFound().build();
+
+            if (response == null) {
+
+                return ResponseEntity.notFound().build();
+            }
             return ResponseEntity.ok(response);
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
@@ -71,9 +78,9 @@ public class UserController {
 
 
     @GetMapping("/followers/{userId}")
-    public ResponseEntity<PageResponse<Users>> getFollowers(@PathVariable Long userId,Pageable pageable){
+    public ResponseEntity<PageResponse<UserDto>> getFollowers(@PathVariable Long userId,Pageable pageable){
      try {
-         PageResponse<Users>response=usersService.findFollowersByUserId(userId,pageable);
+         PageResponse<UserDto>response=usersService.findFollowersByUserId(userId,pageable);
          return ResponseEntity.status(HttpStatus.OK).body(response);
 
      }catch (Exception e){
@@ -128,6 +135,22 @@ public class UserController {
             return ResponseEntity.badRequest().build();
         }
     }
+
+
+    @GetMapping("/search/{id}")
+    public ResponseEntity<PageResponse<UserDto>> searchUsers(
+            @PathVariable Long id,
+            @RequestParam(required = false, defaultValue = "") String nom,
+            @PageableDefault(size = 5,page = 0) Pageable pageable) {
+        try {
+            PageResponse<UserDto>response=usersService.searchUsers(nom,id,pageable);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+
 
 
 

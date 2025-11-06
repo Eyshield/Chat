@@ -1,5 +1,6 @@
 package dz.chat.apiChat.controller;
 
+import dz.chat.apiChat.dto.MessageDto;
 import dz.chat.apiChat.dto.PageResponse;
 import dz.chat.apiChat.entity.Messages;
 import dz.chat.apiChat.services.interfaces.MessagesService;
@@ -8,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,15 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class MessageController {
     private final MessagesService messagesService;
 
-    @PostMapping
-    public ResponseEntity<Messages> addMessage(@RequestBody Messages messages) {
-        try {
-            Messages response = messagesService.addMessages(messages);
-            return ResponseEntity.status(HttpStatus.CREATED).body(response);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Messages> updateMessage(@PathVariable Long id, @RequestBody Messages messages) {
