@@ -1,10 +1,12 @@
-import { Component, computed } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { ChatBar } from '../../Widget/chat-bar/chat-bar';
 import { UserMenu } from '../../Widget/user-menu/user-menu';
 import { MessageService } from '../../Services/message-service';
 import { CookieService } from 'ngx-cookie-service';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Page } from '../../Models/Page.models';
+import { message } from '../../Models/Message.models';
 
 @Component({
   selector: 'app-chat',
@@ -19,6 +21,15 @@ export class Chat {
 
   messages: any;
   filteredMessages: any;
+  messageConv = signal<Page<message>>({
+    content: [],
+    number: 0,
+    size: 5,
+    totalElements: 0,
+    totalPages: 0,
+    first: false,
+    last: false,
+  });
 
   constructor(
     private messageService: MessageService,
@@ -50,6 +61,21 @@ export class Chat {
 
   onUserSelected(user: any) {
     this.selectedUser = user;
+    this.LoadConv();
+  }
+
+  LoadConv() {
+    this.messageService
+      .loadMessages(this.currentUserId, this.selectedUser.id)
+      .subscribe((data) => {
+        this.messageConv.set(data);
+
+        console.log('currentUserId:', this.currentUserId);
+        console.log(
+          'first msg senderId:',
+          this.messageConv().content[0]?.senderId
+        );
+      });
   }
 
   sendMessage() {
@@ -60,7 +86,7 @@ export class Chat {
       this.selectedUser.id,
       this.newMessage.value.trim()
     );
-
+    this.LoadConv();
     this.newMessage.setValue('');
   }
 }

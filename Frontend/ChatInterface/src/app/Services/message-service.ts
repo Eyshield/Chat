@@ -1,6 +1,12 @@
 import { Injectable, signal } from '@angular/core';
 import { Client, Message } from '@stomp/stompjs';
+import { Observable } from 'rxjs';
 import SockJS from 'sockjs-client';
+import { environment } from '../../environnement/environnement';
+import { Page } from '../Models/Page.models';
+import { HttpClient } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
+import { message } from '../Models/Message.models';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +18,12 @@ export class MessageService {
   messages = signal<any[]>([]);
   isConnected = signal<boolean>(false);
 
+  constructor(private Http: HttpClient, private cookie: CookieService) {}
+
   connect(userId: number) {
     this.stompClient = new Client({
       webSocketFactory: () => new SockJS('http://localhost:9000/ws'),
       reconnectDelay: 5000,
-      debug: (str) => console.log('🔧 STOMP:', str),
     });
 
     this.stompClient.onConnect = () => {
@@ -69,5 +76,14 @@ export class MessageService {
     if (this.stompClient) {
       this.stompClient.deactivate();
     }
+  }
+
+  public loadMessages(id1: number, id2: number): Observable<Page<message>> {
+    const token = this.cookie.get('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.Http.get<Page<message>>(
+      environment.apiUrl + `/message/conv/${id1}/${id2}`,
+      { headers }
+    );
   }
 }

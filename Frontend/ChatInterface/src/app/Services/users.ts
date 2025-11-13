@@ -52,11 +52,19 @@ export class Users {
       { headers }
     );
   }
-  public searchUsers(nom: String): Observable<Page<User>> {
+  public searchUsers(nom: String, id: number): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
     return this.Http.get<Page<User>>(
-      environment.apiUrl + `/user/search?nom=${nom}`,
+      environment.apiUrl + `/user/search/${id}?nom=${nom}`,
+      { headers }
+    );
+  }
+  public convWithUsers(id: number): Observable<Page<User>> {
+    const token = this.cookie.get('token');
+    const headers = { Authorization: `Bearer ${token}` };
+    return this.Http.get<Page<User>>(
+      environment.apiUrl + `/user/conv/userId=${id}`,
       { headers }
     );
   }

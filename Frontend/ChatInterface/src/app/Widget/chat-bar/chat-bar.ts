@@ -42,16 +42,18 @@ export class ChatBar {
   loadUsers() {
     const id = Number(this.cookie.get('user_Id'));
     if (this.searchTerm.value && this.searchTerm.value !== null) {
-      this.userService.searchUsers(this.searchTerm.value).subscribe((data) => {
-        this.filteredUsers.set(data);
-      });
+      this.userService
+        .searchUsers(this.searchTerm.value, id)
+        .subscribe((data) => {
+          console.log(data);
+          this.filteredUsers.set(data);
+        });
     } else {
       this.userService
         .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
         .subscribe((data) => {
           if (data && data.content) {
             this.pageUsers = data;
-            console.log(data);
             this.users.set(data.content);
           } else {
             this.users.set([]);

@@ -27,7 +27,6 @@ export class UserMenu {
   ngOnInit() {
     this.id = Number(this.cookie.get('user_Id'));
     this.userService.getUserById(this.id).subscribe((data) => {
-      console.log(data);
       this.user.set(data);
     });
   }
