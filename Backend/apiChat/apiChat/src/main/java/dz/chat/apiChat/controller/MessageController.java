@@ -63,6 +63,18 @@ public class MessageController {
             return ResponseEntity.badRequest().build();
         }
     }
+    @GetMapping("/conv/{userId1}/{userId2}")
+    public ResponseEntity<PageResponse<MessageDto>> findConversation(
+          @PathVariable Long userId1,@PathVariable Long userId2,
+            @PageableDefault(size = 5) Pageable pageable) {
+        try {
+            PageResponse<MessageDto> response = messagesService.findConverssation(userId1,userId2, pageable);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
 }
 
 

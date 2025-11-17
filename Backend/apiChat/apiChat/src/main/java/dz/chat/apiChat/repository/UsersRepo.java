@@ -20,5 +20,24 @@ public interface UsersRepo extends JpaRepository<Users,Long> {
     @Query("SELECT f FROM Users u JOIN u.users f WHERE u.id = :userId")
     Page<Users> findFollowedByUserId(@Param("userId") Long userId,Pageable pageable);
 
+    @Query("""
+SELECT u FROM Users u
+WHERE u.id IN (
+    SELECT CASE 
+             WHEN m.sender.id = :userId THEN m.receiver.id 
+             ELSE m.sender.id 
+           END
+    FROM Messages m
+    WHERE m.sender.id = :userId OR m.receiver.id = :userId
+)
+ORDER BY (
+    SELECT MAX(m2.dateStamp) 
+    FROM Messages m2 
+    WHERE (m2.sender.id = :userId AND m2.receiver.id = u.id) 
+       OR (m2.sender.id = u.id AND m2.receiver.id = :userId)
+) DESC
+""")
+    Page<Users> findChatUsersOrderByLastMessage(@Param("userId") Long userId,Pageable pageable);
+
 
 }

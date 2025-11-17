@@ -13,4 +13,6 @@ public interface MessagesService {
     Messages getMessages(Long id);
     String deleteMessages(Long id);
     PageResponse<Messages> searchMessages(String messages, Pageable pageable);
+    PageResponse<MessageDto> findConverssation(Long userId1,Long userId2, Pageable pageable);
+
 }

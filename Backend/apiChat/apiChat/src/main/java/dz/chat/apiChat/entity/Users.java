@@ -48,8 +48,10 @@ public class Users implements UserDetails {
 private Collection<Users> followers= new ArrayList<>();
 
 @OneToMany(mappedBy = "sender")
+@JsonIgnoreProperties("sender")
 private Collection<Messages>messagesSent= new ArrayList<>();
 @OneToMany(mappedBy = "receiver")
+@JsonIgnoreProperties("receiver")
 private  Collection<Messages>messagesReceived= new ArrayList<>();
 
     @Override

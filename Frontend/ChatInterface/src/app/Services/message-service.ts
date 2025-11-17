@@ -21,9 +21,11 @@ export class MessageService {
   constructor(private Http: HttpClient, private cookie: CookieService) {}
 
   connect(userId: number) {
+    const token = this.cookie.get('token');
     this.stompClient = new Client({
-      webSocketFactory: () => new SockJS('http://localhost:9000/ws'),
+      webSocketFactory: () => new SockJS(`http://localhost:9000/ws`),
       reconnectDelay: 5000,
+      connectHeaders: { Authorization: `Bearer ${token}` },
     });
 
     this.stompClient.onConnect = () => {
@@ -65,11 +67,6 @@ export class MessageService {
       destination: '/app/sendMessage',
       body: JSON.stringify({ senderId, receiverId, message }),
     });
-
-    this.messages.update((old) => [
-      ...old,
-      { senderId, receiverId, message, self: true },
-    ]);
   }
 
   disconnect() {
@@ -78,11 +75,17 @@ export class MessageService {
     }
   }
 
-  public loadMessages(id1: number, id2: number): Observable<Page<message>> {
+  public loadMessages(
+    id1: number,
+    id2: number,
+    size: number,
+    page: number
+  ): Observable<Page<message>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
     return this.Http.get<Page<message>>(
-      environment.apiUrl + `/message/conv/${id1}/${id2}`,
+      environment.apiUrl +
+        `/message/conv/${id1}/${id2}?page=${page}&size=${size}`,
       { headers }
     );
   }

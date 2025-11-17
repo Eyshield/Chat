@@ -31,7 +31,7 @@ export class UserMenu {
     });
   }
   logout() {
-    this.auth.logOut;
+    this.auth.logOut();
     this.router.navigate(['/landingPage']);
   }
 }

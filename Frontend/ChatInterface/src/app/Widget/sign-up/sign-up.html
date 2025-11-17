@@ -14,7 +14,23 @@
           formControlName="nom"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('nom')?.invalid && signUpForm.get('nom')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('nom')?.invalid && signUpForm.get('nom')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('nom')?.valid && signUpForm.get('nom')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('nom')?.valid && signUpForm.get('nom')?.touched
+          "
         />
+        @if (signUpForm.get('nom')?.invalid && signUpForm.get('nom')?.touched) {
+        <span class="text-red-300 text-sm"> Le nom est obligatoire. </span>
+        }
+
         <label id="Prenom" for="Prenom" class="text-white font-medium"
           >Prenom</label
         >
@@ -23,17 +39,58 @@
           formControlName="prenom"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('prenom')?.invalid &&
+            signUpForm.get('prenom')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('prenom')?.invalid &&
+            signUpForm.get('prenom')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('prenom')?.valid && signUpForm.get('prenom')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('prenom')?.valid && signUpForm.get('prenom')?.touched
+          "
         />
+        @if (signUpForm.get('prenom')?.invalid &&
+        signUpForm.get('prenom')?.touched ) {
+        <span class="text-red-300 text-sm"> Le prénom est obligatoire. </span>
+        }
+
         <label id="Username" for="Username" class="text-white font-medium"
           >Username</label
         >
+
         <input
           formControlName="username"
           id="Username"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('username')?.invalid &&
+            signUpForm.get('username')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('username')?.invalid &&
+            signUpForm.get('username')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('username')?.valid &&
+            signUpForm.get('username')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('username')?.valid &&
+            signUpForm.get('username')?.touched
+          "
         />
-        } @if (i==2) {
+        @if (signUpForm.get('username')?.invalid &&
+        signUpForm.get('username')?.touched) {
+        <span class="text-red-300 text-sm">
+          Le nom d'utilisateur est obligatoire.
+        </span>
+        } } @if (i==2) {
 
         <label id="Email" for="Email" class="text-white font-medium"
           >Email</label
@@ -43,7 +100,28 @@
           id="Email"
           type="text"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('email')?.valid && signUpForm.get('email')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('email')?.valid && signUpForm.get('email')?.touched
+          "
         />
+        @if (signUpForm.get('email')?.hasError('required') &&
+        signUpForm.get('email')?.touched) {
+        <span class="text-red-300 text-sm"> L'email est obligatoire. </span>
+        } @if (signUpForm.get('email')?.hasError('email') &&
+        signUpForm.get('email')?.touched) {
+        <span class="text-red-300 text-sm"> Format email invalide. </span>
+
+        }
+
         <label id="Password" for="Password" class="text-white font-medium"
           >Password</label
         >
@@ -52,7 +130,30 @@
           formControlName="password"
           type="password"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('password')?.invalid &&
+            signUpForm.get('password')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('password')?.invalid &&
+            signUpForm.get('password')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('password')?.valid &&
+            signUpForm.get('password')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('password')?.valid &&
+            signUpForm.get('password')?.touched
+          "
         />
+
+        @if (signUpForm.get('password')?.invalid &&
+        signUpForm.get('password')?.touched) {
+        <span class="text-red-300 text-sm">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </span>
+        }
         <label
           id="ConfirmPassword"
           for="ConfirmPassword"
@@ -64,8 +165,28 @@
           id="ConfirmPassword"
           type="password"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('ConfirmPassword')?.invalid &&
+            signUpForm.get('ConfirmPassword')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('ConfirmPassword')?.invalid &&
+            signUpForm.get('ConfirmPassword')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('ConfirmPassword')?.valid &&
+            signUpForm.get('ConfirmPassword')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('ConfirmPassword')?.valid &&
+            signUpForm.get('ConfirmPassword')?.touched
+          "
         />
-        } @if (i==3) {
+        @if (signUpForm.get('confirmPassword')?.invalid &&
+        signUpForm.get('confirmPassword')?.touched) {
+        <span class="text-red-300 text-sm">
+          La confirmation doit contenir au moins 6 caractères. </span
+        >} } @if (i==3) {
         <label id="image" for="image" class="text-white font-medium"
           >image</label
         >
@@ -75,7 +196,22 @@
           (change)="onFileChange($event)"
           type="file"
           class="border rounded-lg text-white bg-white/20 py-2 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            signUpForm.get('image')?.invalid && signUpForm.get('image')?.touched
+          "
+          [class.ring-red-300]="
+            signUpForm.get('image')?.invalid && signUpForm.get('image')?.touched
+          "
+          [class.border-green-500]="
+            signUpForm.get('image')?.valid && signUpForm.get('image')?.touched
+          "
+          [class.ring-green-300]="
+            signUpForm.get('image')?.valid && signUpForm.get('image')?.touched
+          "
         />
+        @if (signUpForm.get('image')?.invalid &&
+        signUpForm.get('image')?.touched) {
+        <span class="text-red-300 text-sm"> L'image est obligatoire. </span>}
         @if (previewImage) {
         <div class="mt-2">
           <img

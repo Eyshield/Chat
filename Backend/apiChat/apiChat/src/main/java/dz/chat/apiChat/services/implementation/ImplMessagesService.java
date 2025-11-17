@@ -40,7 +40,6 @@ public class ImplMessagesService implements MessagesService {
     public MessageDto sendMessages(MessageDto messageDto) {
         Users sender = usersRepo.findById(messageDto.getSenderId()).orElseThrow();
         Users receiver = usersRepo.findById(messageDto.getReceiverId()).orElseThrow();
-
         Messages message = new Messages();
         message.setMessage(messageDto.getMessage());
         message.setSender(sender);
@@ -48,15 +47,15 @@ public class ImplMessagesService implements MessagesService {
         message.setDateStamp(new Date());
         message.setRead(false);
         message = messageRepo.save(message);
-
-        // Met à jour le DTO
         messageDto.setId(message.getId());
         messageDto.setDateStamp(message.getDateStamp());
+        messagingTemplate.convertAndSend(
+                "/queue/messages/" + receiver.getId(),
+                messageDto
+        );
 
-        // Envoi en temps réel au destinataire
-        messagingTemplate.convertAndSendToUser(
-                receiver.getId().toString(),
-                "/queue/messages",
+        messagingTemplate.convertAndSend(
+                "/queue/messages/" + sender.getId(),
                 messageDto
         );
 
@@ -96,6 +95,28 @@ public class ImplMessagesService implements MessagesService {
                 message.isFirst(),
                 message.isLast()
         );
+        return response ;
+    }
+
+    @Override
+    public PageResponse<MessageDto> findConverssation(Long userId1, Long userId2, Pageable pageable) {
+        Page<Messages>message= messageRepo.findConversation(userId1,userId2,pageable);
+        Page<MessageDto>dtoPage= message.map(u->{
+                MessageDto messageDto = new MessageDto();
+                messageDto.setId(u.getId());
+                messageDto.setMessage(u.getMessage());
+                messageDto.setDateStamp(u.getDateStamp());
+                messageDto.setSenderId(u.getSender().getId());
+                messageDto.setReceiverId(u.getReceiver().getId());
+                return messageDto;});
+        PageResponse<MessageDto>response =new PageResponse<>(
+                dtoPage.getContent(),
+                dtoPage.getNumber(),
+                dtoPage.getSize(),
+                dtoPage.getTotalElements(),
+                dtoPage.getTotalPages(),
+                dtoPage.isFirst(),
+                dtoPage.isLast());
         return response ;
     }
 }

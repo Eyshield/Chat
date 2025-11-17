@@ -34,6 +34,26 @@ export class ChatBar {
     first: false,
     last: false,
   };
+
+  usersConv = signal<Page<User>>({
+    content: [],
+    number: 0,
+    size: 5,
+    totalElements: 0,
+    totalPages: 0,
+    first: false,
+    last: false,
+  });
+
+  usersFollowed = signal<Page<User>>({
+    content: [],
+    number: 0,
+    size: 5,
+    totalElements: 0,
+    totalPages: 0,
+    first: false,
+    last: false,
+  });
   searchTerm = new FormControl('');
 
   ngOnInit() {
@@ -45,21 +65,38 @@ export class ChatBar {
       this.userService
         .searchUsers(this.searchTerm.value, id)
         .subscribe((data) => {
-          console.log(data);
           this.filteredUsers.set(data);
         });
     } else {
-      this.userService
-        .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
-        .subscribe((data) => {
-          if (data && data.content) {
-            this.pageUsers = data;
-            this.users.set(data.content);
-          } else {
-            this.users.set([]);
-          }
-        });
+      this.filteredUsers.set({
+        content: [],
+        number: 0,
+        size: 5,
+        totalElements: 0,
+        totalPages: 0,
+        first: false,
+        last: false,
+      });
     }
+    this.userService
+      .getFollowers(this.pageUsers.size, this.pageUsers.number, id)
+      .subscribe((data) => {
+        if (data && data.content) {
+          this.pageUsers = data;
+          this.users.set(data.content);
+        }
+      });
+    this.userService.convWithUsers(id).subscribe((data) => {
+      if (data && data.content) {
+        this.usersConv.set(data);
+      }
+    });
+
+    this.userService
+      .getFollowed(this.pageUsers.size, this.pageUsers.number, id)
+      .subscribe((data) => {
+        this.usersFollowed.set(data);
+      });
   }
 
   selectUser(user: any) {

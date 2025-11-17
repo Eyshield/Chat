@@ -20,10 +20,10 @@ export class Users {
     });
   }
 
-  public updateUser(id: number, user: User): Observable<User> {
+  public updateUser(id: number, formData: any): Observable<User> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.put<User>(environment.apiUrl + `/user/${id}`, user, {
+    return this.Http.put<User>(environment.apiUrl + `/user/${id}`, formData, {
       headers,
     });
   }
@@ -63,10 +63,9 @@ export class Users {
   public convWithUsers(id: number): Observable<Page<User>> {
     const token = this.cookie.get('token');
     const headers = { Authorization: `Bearer ${token}` };
-    return this.Http.get<Page<User>>(
-      environment.apiUrl + `/user/conv/userId=${id}`,
-      { headers }
-    );
+    return this.Http.get<Page<User>>(environment.apiUrl + `/user/conv/${id}`, {
+      headers,
+    });
   }
   public getFollowers(
     size: number,

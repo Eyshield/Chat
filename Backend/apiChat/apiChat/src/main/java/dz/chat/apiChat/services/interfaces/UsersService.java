@@ -10,16 +10,22 @@ import org.springframework.data.domain.Pageable;
 public interface UsersService {
     PageResponse<Users> findAllUsers(Pageable pageable);
     Users addUsers(Users users);
-    Users getUsers(Long id);
-    Users updateUsers(Long id,Users users);
+    UserDto getUsers(Long id);
+    UserDto updateUsers(Long id,
+                      String nom,
+                      String prenom,
+                      String username,
+                      String email,
+                      String imageUrl);
     String deleteUsers(Long id);
     PageResponse<Users> searchUsers(String nom,Pageable pageable);
     PageResponse<UserDto> searchUsers(String nom, Long userId, Pageable pageable);
 
     PageResponse<UserDto> findFollowersByUserId(Long userId,Pageable pageable);
 
-    PageResponse<Users> findFollowedByUserId( Long userId,Pageable pageable);
+    PageResponse<UserDto> findFollowedByUserId( Long userId,Pageable pageable);
 
     String followUser(Long userId,Long targetId);
     String unFollowUser(Long userId, Long targetId);
+    PageResponse<UserDto> findChatUsersOrderByLastMessage(Long userId, Pageable pageable);
 }

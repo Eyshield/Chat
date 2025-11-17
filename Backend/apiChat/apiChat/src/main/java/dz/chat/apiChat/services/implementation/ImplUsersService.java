@@ -46,14 +46,48 @@ public class ImplUsersService implements UsersService {
     }
 
     @Override
-    public Users getUsers(Long id) {
-        return usersRepo.findById(id).orElseThrow(()-> new RuntimeException("No user found"));
+    public UserDto getUsers(Long id) {
+        Users users= usersRepo.findById(id).orElseThrow(()-> new RuntimeException("No user found"));
+        UserDto userDto = new UserDto(
+                users.getId(),
+                users.getNom(),
+                users.getPrenom(),
+                users.getImageUrl(),
+                users.getUsername(),
+                users.getEmail(),
+                false
+        );
+        return userDto;
     }
 
     @Override
-    public Users updateUsers(Long id, Users users) {
-        users.setId(id);
-        return usersRepo.save(users);
+    public UserDto updateUsers(Long id,
+                             String nom,
+                             String prenom,
+                             String username,
+                             String email,
+                             String imageUrl) {
+
+        Users user = usersRepo.findById(id)
+                .orElseThrow(() -> new RuntimeException("Utilisateur non trouvé"));
+
+        user.setNom(nom);
+        user.setPassword(user.getPassword());
+        user.setPrenom(prenom);
+        user.setUsername(username);
+        user.setEmail(email);
+        user.setImageUrl(imageUrl);
+       Users users= usersRepo.save(user);
+       UserDto userDto =new UserDto(
+               users.getId(),
+               users.getNom(),
+               users.getPrenom(),
+               users.getImageUrl(),
+               users.getUsername(),
+               users.getEmail(),
+              false
+       );
+        return userDto;
     }
 
     @Override
@@ -93,17 +127,28 @@ public class ImplUsersService implements UsersService {
     }
 
    @Override
-    public PageResponse<Users> findFollowedByUserId( Long userId,Pageable pageable){
+    public PageResponse<UserDto> findFollowedByUserId( Long userId,Pageable pageable){
         Page<Users>users= usersRepo.findFollowedByUserId(userId,pageable);
-       PageResponse<Users>response=new PageResponse<>(
-               users.getContent(),
-               users.getNumber(),
-               users.getSize(),
-               users.getTotalElements(),
-               users.getTotalPages(),
-               users.isFirst(),
-               users.isLast()
-       );
+       Page<UserDto> dtoPage = users.map(u -> {
+           UserDto userDto = new UserDto();
+           userDto.setId(u.getId());
+           userDto.setUsername(u.getUsername());
+           userDto.setEmail(u.getEmail());
+           userDto.setImageUrl(u.getImageUrl());
+           userDto.setNom(u.getNom());
+           return userDto;
+       });
+
+       PageResponse<UserDto> response = new PageResponse<>(
+               dtoPage.getContent(),
+               dtoPage.getNumber(),
+               dtoPage.getSize(),
+               dtoPage.getTotalElements(),
+               dtoPage.getTotalPages(),
+               dtoPage.isLast(),
+               dtoPage.isFirst() );
+
+
        return response;
 
    }
@@ -171,5 +216,35 @@ public class ImplUsersService implements UsersService {
         );
 
 
-    }}
+    }
+    @Override
+    public PageResponse<UserDto> findChatUsersOrderByLastMessage(Long userId, Pageable pageable) {
+        Page<Users> users = usersRepo.findChatUsersOrderByLastMessage(userId, pageable);
+        Page<UserDto> dtoPage = users.map(u -> {
+            UserDto userDto = new UserDto();
+            userDto.setId(u.getId());
+            userDto.setUsername(u.getUsername());
+            userDto.setEmail(u.getEmail());
+            userDto.setImageUrl(u.getImageUrl());
+            userDto.setNom(u.getNom());
+            return userDto;
+        });
+
+        PageResponse<UserDto> response = new PageResponse<>(
+                dtoPage.getContent(),
+                dtoPage.getNumber(),
+                dtoPage.getSize(),
+                dtoPage.getTotalElements(),
+                dtoPage.getTotalPages(),
+                dtoPage.isLast(),
+                dtoPage.isFirst() );
+
+
+        return response;
+    }
+
+
+
+
+}
 

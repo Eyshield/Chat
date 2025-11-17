@@ -1,5 +1,6 @@
 package dz.chat.apiChat.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +21,10 @@ public class Messages {
     private Boolean read;
     @ManyToOne
     @JoinColumn(name = "sender_id")
+    @JsonIgnoreProperties("messagesSent")
     private Users sender ;
     @ManyToOne
     @JoinColumn(name = "receiver_id")
+    @JsonIgnoreProperties("messagesReceived")
     private Users receiver;
 }

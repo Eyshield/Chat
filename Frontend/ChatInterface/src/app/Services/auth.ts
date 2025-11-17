@@ -34,6 +34,8 @@ export class Auth {
   }
 
   public logOut() {
-    this.cookie.deleteAll;
+    this.cookie.delete('token', '/', 'localhost');
+    this.cookie.delete('user_Id', '/', 'localhost');
+    this.cookie.delete('isAuth', '/', 'localhost');
   }
 }

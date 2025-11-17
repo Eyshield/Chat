@@ -6,25 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/AuthenticationFilter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/AuthentificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/AuthentificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/WebSocketConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Messages.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Users.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/MessageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/MessageRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/AuthentificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/AuthentificationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplMessagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplMessagesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/MessagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/MessagesService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/uploads/1761648838499_profil.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Models/Users.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Models/Users.models.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/message-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/message-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/users.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,21 +60,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.ApiChatApplication.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/sany/Downloads/Chat/Backend",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.customizations"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.ApiChatApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/sany/Downloads/Chat/Backend&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.customizations&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\sany\Downloads\Chat\Backend\apiChat\apiChat" />

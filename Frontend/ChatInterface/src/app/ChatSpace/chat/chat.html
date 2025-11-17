@@ -1,27 +1,13 @@
 <div class="flex h-screen w-full bg-gray-100">
-  <!-- Sidebar gauche : liste des utilisateurs -->
   <div class="h-full w-fit bg-white shadow-lg">
     <app-chat-bar (userSelected)="onUserSelected($event)"></app-chat-bar>
   </div>
 
-  <!-- Zone centrale : conversation -->
   <div class="flex flex-1 justify-center items-center relative bg-gray-50">
-    <!-- Aucune conversation sélectionnée -->
-    @if (!selectedUser) {
-    <div class="flex flex-col justify-center items-center">
-      <img src="chat.jpg" alt="Chat" class="w-96 h-96 object-contain" />
-      <p class="text-gray-500 text-lg mt-4">
-        Sélectionne un utilisateur pour commencer la discussion
-      </p>
-    </div>
-    }
-
-    <!-- Conversation sélectionnée -->
     @if (selectedUser) {
-    <div class="flex flex-col h-full w-full p-6">
-      <!-- Header conversation -->
+    <div class="flex flex-col h-full w-full p-6 max-h-screen">
       <div
-        class="flex items-center space-x-4 border-b pb-4 mb-4 bg-white shadow-sm rounded-xl p-4"
+        class="flex items-center space-x-4 border-b pb-4 mb-4 bg-white shadow-sm rounded-xl p-4 shrink-0"
       >
         <img
           [src]="selectedUser.imageUrl"
@@ -31,9 +17,10 @@
         <h2 class="text-xl font-bold text-gray-800">{{ selectedUser.nom }}</h2>
       </div>
 
-      <!-- Messages -->
       <div
-        class="flex-1 overflow-y-auto p-4 space-y-3 rounded-xl bg-white shadow-sm"
+        class="flex-1 min-h-0 overflow-y-auto p-4 space-y-3 rounded-xl bg-white shadow-sm"
+        #scrollContainer
+        (scroll)="onScroll()"
       >
         @for (msg of messageConv().content; track $index) {
         <div class="flex w-full">
@@ -42,7 +29,7 @@
               'ml-auto bg-purple-600 text-white': msg.senderId == currentUserId,
               'bg-gray-200 text-gray-800': msg.senderId !== currentUserId
             }"
-            class="rounded-2xl p-3 max-w-[60%] break-words"
+            class="rounded-2xl p-3 max-w-[60%] wrap-break-word"
           >
             {{ msg.message }}
           </div>
@@ -50,8 +37,7 @@
         }
       </div>
 
-      <!-- Zone saisie message -->
-      <div class="mt-4 flex items-center space-x-3">
+      <div class="mt-4 flex items-center space-x-3 shrink-0">
         <input
           [formControl]="newMessage"
           type="text"
@@ -70,7 +56,6 @@
     }
   </div>
 
-  <!-- Sidebar droite : menu utilisateur -->
   <div class="h-full w-fit bg-gray-50">
     <app-user-menu></app-user-menu>
   </div>

@@ -17,7 +17,27 @@
           id="email"
           placeholder="Enter your email"
           class="px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          [class.ring-red-300]="
+            loginForm.get('email')?.invalid && loginForm.get('email')?.touched
+          "
+          [class.border-green-500]="
+            loginForm.get('email')?.valid && loginForm.get('email')?.touched
+          "
+          [class.ring-green-300]="
+            loginForm.get('email')?.valid && loginForm.get('email')?.touched
+          "
         />
+        @if (loginForm.get('email')?.hasError('required') &&
+        loginForm.get('email')?.touched) {
+        <span class="text-red-300 text-sm"> L'email est obligatoire. </span>
+        } @if (loginForm.get('email')?.hasError('email') &&
+        loginForm.get('email')?.touched) {
+        <span class="text-red-300 text-sm"> Format email invalide. </span>
+
+        }
       </div>
 
       <div class="flex flex-col space-y-2">
@@ -28,7 +48,29 @@
           id="password"
           placeholder="••••••••"
           class="px-3 py-2 rounded-lg bg-white/20 text-white placeholder-white/60 border border-white/30 focus:outline-none focus:ring-2 focus:ring-purple-300"
+          [class.border-red-500]="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          [class.ring-red-300]="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          [class.border-green-500]="
+            loginForm.get('password')?.valid &&
+            loginForm.get('password')?.touched
+          "
+          [class.ring-green-300]="
+            loginForm.get('password')?.valid &&
+            loginForm.get('password')?.touched
+          "
         />
+        @if (loginForm.get('password')?.invalid &&
+        loginForm.get('password')?.touched) {
+        <span class="text-red-300 text-sm">
+          Le mot de passe doit contenir au moins 6 caractères.
+        </span>
+        }
       </div>
 
       <button

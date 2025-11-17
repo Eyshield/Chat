@@ -1,10 +1,10 @@
 export interface User {
   id: number;
-  nom: String;
-  prenom: String;
-  username: String;
-  email: String;
-  imageUrl: String;
+  nom: string;
+  prenom: string;
+  username: string;
+  email: string;
+  imageUrl: string;
   users: User;
   followers: User;
   followed?: boolean;
