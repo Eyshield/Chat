@@ -4,33 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/AuthenticationFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/AuthenticationFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Messages.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Messages.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/entity/Users.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/MessageRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/MessageRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/repository/UsersRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplMessagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplMessagesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/implementation/ImplUsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/MessagesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/MessagesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiChat/apiChat/src/main/java/dz/chat/apiChat/services/interfaces/UsersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/uploads/1761648838499_profil.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/chat/chat.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/ChatSpace/profile-settings/profile-settings.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Models/Users.models.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Models/Users.models.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/message-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/message-service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/users.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Services/users.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Frontend/ChatInterface/src/app/Widget/chat-bar/chat-bar.ts" afterDir="false" />
-    </list>
+    <list default="true" id="2c31daa6-905e-420c-9408-8e3ba2a0b8d3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
